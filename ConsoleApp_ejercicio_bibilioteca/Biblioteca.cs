@@ -21,7 +21,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
         }
 
         public string Direccion { get { return _direccion; }
-            set { _direccion = value; } 
+            set { _direccion = value; }
         }
 
         public List<Libro> Libros
@@ -42,13 +42,13 @@ namespace ConsoleApp_ejercicio_bibilioteca
             set { _prestamos = value; }
         }
 
-        public Biblioteca (string nombre, string direccion)
+        public Biblioteca(string nombre, string direccion)
         {
             nombre = Nombre;
             direccion = Direccion;
-            Libros = new List<Libro> ();
-            Prestamos = new List<Prestamo> ();
-            Clientes = new List<Cliente> ();
+            Libros = new List<Libro>();
+            Prestamos = new List<Prestamo>();
+            Clientes = new List<Cliente>();
         }
 
         public void IngresarCliente(Cliente cliente)
@@ -61,15 +61,18 @@ namespace ConsoleApp_ejercicio_bibilioteca
             this.Libros.Add(libro);
         }
 
-        public List<Cliente> ConsultarClientes()  //revisar
+        public Cliente  ConsultarCliente(int id)  //revisar
         {
-            
-            foreach (Cliente c in  this.Clientes)
+            Cliente a = null;
+
+            foreach (Cliente cliente in  this.Clientes)
             {
-                Console.WriteLine (c);
-                
+                if (cliente.IdCliente == id)
+                {
+                    a = cliente;
+                }
             }
-            return Clientes;
+            return a;
         }
 
         public List<Cliente> ListarClientes()
