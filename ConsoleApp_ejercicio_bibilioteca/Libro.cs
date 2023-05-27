@@ -8,7 +8,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
 {
     public class Libro
     {
-        private int _idLibro;
+        private int _id;
         private string _titulo;
         private string _autor;
         private DateTime _fechaPublicacion;
@@ -20,8 +20,8 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
         public int IdLibro
         {
-            get { return _idLibro; }
-            set { _idLibro = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         public string Titulo
@@ -75,7 +75,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
         public Libro(int idLibro, string titulo, string autor, DateTime fechaPublicacion,
             string editorial, int paginas, int edicion, string tema)
         {
-            idLibro = IdLibro;
+            IdLibro = idLibro;
             Titulo = titulo;
             Autor = autor;
             FechaPublicacion = fechaPublicacion;

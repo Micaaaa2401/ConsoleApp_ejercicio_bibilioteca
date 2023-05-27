@@ -8,25 +8,53 @@ namespace ConsoleApp_ejercicio_bibilioteca
 {
     public class Ejemplar
     {
-        private int _idEjemplar;
-        private Boolean _estadoDisponibilidad;
+        private int _idLibro;
+        private int _id;
+        private string _observaciones;
+        private int _precio;
+        private DateTime _fechaAlta;
+       
 
-        public int IdEjemlar
+
+        public int IdLibro
         {
-            get { return _idEjemplar; }
-            set { _idEjemplar = value; }
+            get { return _idLibro; }
+            set { _idLibro = value; }
+        }
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
         }
 
-        public Boolean EstadoDisponibilidad
+        
+
+        public string Observaciones
         {
-            get { return _estadoDisponibilidad; }
-            set { _estadoDisponibilidad = value; }
+            get { return _observaciones; }
+            set { _observaciones = value; }
         }
 
-        public Ejemplar(int idEjemplar, Boolean estadoDisponibilidad)
+        public DateTime FechaAlta
         {
-            idEjemplar = IdEjemlar;
-            EstadoDisponibilidad = estadoDisponibilidad;
+            get { return _fechaAlta; }
+            set { _fechaAlta = value; }
+        }
+        
+        public int Precio
+        {
+            get { return _precio; }
+            set { _precio = value; }
+        }
+
+
+        public Ejemplar(int idLibro, int id , string observaciones, DateTime fechaAlta, int precio )
+        {
+            IdLibro = idLibro;
+            Id = id;
+            Observaciones = observaciones;
+            FechaAlta = fechaAlta;
+            Precio = precio;
         }
 
     }
