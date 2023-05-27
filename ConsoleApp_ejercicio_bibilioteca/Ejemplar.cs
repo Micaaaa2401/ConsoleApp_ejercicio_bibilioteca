@@ -13,7 +13,6 @@ namespace ConsoleApp_ejercicio_bibilioteca
         private string _observaciones;
         private int _precio;
         private DateTime _fechaAlta;
-       
 
 
         public int IdLibro
@@ -21,6 +20,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
             get { return _idLibro; }
             set { _idLibro = value; }
         }
+
         public int Id
         {
             get { return _id; }
@@ -48,7 +48,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
         }
 
 
-        public Ejemplar(int idLibro, int id , string observaciones, DateTime fechaAlta, int precio )
+        public Ejemplar(int idLibro, int id , string observaciones, DateTime fechaAlta, int precio ) 
         {
             IdLibro = idLibro;
             Id = id;
@@ -56,6 +56,8 @@ namespace ConsoleApp_ejercicio_bibilioteca
             FechaAlta = fechaAlta;
             Precio = precio;
         }
+
+        
 
     }
 }
