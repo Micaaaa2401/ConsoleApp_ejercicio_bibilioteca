@@ -88,6 +88,47 @@ namespace ConsoleApp_ejercicio_bibilioteca
         }
 
 
+        public override string ToString()
+        {
+            return string.Format("{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}", IdLibro, Titulo, Autor, FechaPublicacion, Editorial, Tema, Edicion, Paginas);
+        }
+
+
+        public void AgregarEjemplar(Ejemplar ejemplar)
+        {
+            Ejemplares.Add(ejemplar);
+        }
+
+        public void BorrarEjemplar (int id)
+        {
+            bool encontrado = false;
+
+            foreach (Ejemplar e in Ejemplares)
+            {
+                if (e.Id == id)
+                {
+                    Ejemplares.Remove(e);
+                    encontrado = true;
+                }
+   
+            }
+
+            if (encontrado == false)
+            {
+                throw new Exception("No se encontro el ejemplar a eliminar");
+
+            }
+
+            else
+            {
+                Console.WriteLine("Se elimino correctamente el ejemplar nro " + id + " del libro " + this.Titulo);
+            }
+        }
+
+        public int TraerCantidadEjemplares()
+        {
+            return Ejemplares.Count();
+        }
         //pendiente hacer los metodos
     }
 }
