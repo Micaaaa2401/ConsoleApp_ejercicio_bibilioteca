@@ -112,11 +112,11 @@ namespace ConsoleApp_ejercicio_bibilioteca
         
        
         public void PrestarLibro(int idEjemplar)
-{
+       {
    
-    // Buscar el ejemplar en la lista de libros de la biblioteca
-    foreach (Libro libro in Libros)
-    {
+        // Buscar el ejemplar en la lista de libros de la biblioteca
+         foreach (Libro libro in Libros)
+       {
         foreach (Ejemplar ejemplar in libro.Ejemplares)
         {
             if (ejemplar.Id == idEjemplar)
@@ -168,6 +168,59 @@ namespace ConsoleApp_ejercicio_bibilioteca
     Console.WriteLine("Ejemplar no encontrado.");
 }
 
-        
+        public void DevolverLibro(int idEjemplar)
+{
+    // Buscar el ejemplar en la lista de libros de la biblioteca
+    foreach (Libro libro in Libros)
+    {
+        foreach (Ejemplar ejemplar in libro.Ejemplares)
+        {
+            if (ejemplar.Id == idEjemplar)
+            {
+                // Verificar si el ejemplar está prestado
+                if (!ejemplar.Prestado)
+                {
+                    Console.WriteLine("El ejemplar no está prestado.");
+                    return;
+                }
+
+                // Buscar el préstamo correspondiente al ejemplar
+                Prestamo prestamo = null;
+                foreach (Prestamo p in Prestamos)
+                {
+                    if (p.IdEjemplar == idEjemplar)
+                    {
+                        prestamo = p;
+                        break;
+                    }
+                }
+
+                if (prestamo == null)
+                {
+                    Console.WriteLine("No se encontró el préstamo correspondiente al ejemplar.");
+                    return;
+                }
+
+                // Actualizar estado del ejemplar
+                ejemplar.Prestado = false;
+                ejemplar.FechaPrestamo = DateTime.MinValue;
+
+                // Calcular y registrar la fecha de devolución
+                DateTime fechaDevolucion = DateTime.Now;
+                prestamo.FechaDevolucionReal = fechaDevolucion;
+
+                // Calcular la cantidad de días de préstamo
+                int diasPrestamo = (int)(fechaDevolucion - prestamo.FechaPrestamo).TotalDays;
+                prestamo.Abierto = false;
+
+                Console.WriteLine("El libro ha sido devuelto exitosamente.");
+                return;
+            }
+        }
+    }
+
+    Console.WriteLine("Ejemplar no encontrado.");
+}
+
     }
 }
