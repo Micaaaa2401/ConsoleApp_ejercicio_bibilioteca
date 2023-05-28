@@ -56,11 +56,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
             this.Clientes.Add(cliente);
         }
 
-        public void AgregarLibro(Libro libro)
-        {
-            this.Libros.Add(libro);
-        }
-
+       
         public Cliente  ConsultarCliente(int id)  //revisar
         {
             Cliente a = null;
@@ -90,5 +86,30 @@ namespace ConsoleApp_ejercicio_bibilioteca
                 }
             }
         }
+        
+        public void AgregarLibro(Libro libro)
+        {
+            this.Libros.Add(libro);
+        }
+
+         public Libro  ConsultarLibro(int id)  //revisar
+        {
+            Libro a = null;
+
+            foreach (Libro libro in  this.Libros)
+            {
+                if (libro.IdLibro == id)
+                {
+                    a = libro;
+                }
+            }
+            return a;
+        }
+         public List<Libro> ListarLibros()
+        {
+            return this.Libros;
+        }
+        
+        
     }
 }
