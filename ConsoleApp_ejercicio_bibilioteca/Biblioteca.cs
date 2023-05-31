@@ -111,58 +111,69 @@ namespace ConsoleApp_ejercicio_bibilioteca
         }
         
        
-        public void PrestarLibro(int idEjemplar)
+        public void PrestarLibro(int idLibro,int idEjemplar)
        {
    
         // Buscar el ejemplar en la lista de libros de la biblioteca
          foreach (Libro libro in Libros)
        {
-        foreach (Ejemplar ejemplar in libro.Ejemplares)
-        {
-            if (ejemplar.Id == idEjemplar)
-            {
-                // Verificar si el ejemplar ya está prestado
-                if (ejemplar.Prestado)
+            if(idLibro == libro.IdLibro)
                 {
-                    Console.WriteLine("El ejemplar ya está prestado.");
-                    return;
-                }
-
-                // Obtener información del cliente que realizará el préstamo
-                Console.Write("Ingrese el ID del cliente: ");
-                int idCliente = Convert.ToInt32(Console.ReadLine());
-
-                Cliente cliente = null;
-                foreach (Cliente c in Clientes)
-                {
-                    if (c.IdCliente == idCliente)
+                    foreach (Ejemplar ejemplar in libro.Ejemplares)
                     {
-                        cliente = c;
-                        break;
+                        if (ejemplar.Id == idEjemplar)
+                        {
+                            // Verificar si el ejemplar ya está prestado
+                            if (ejemplar.Prestado)
+                            {
+                                Console.WriteLine("El ejemplar ya está prestado.");
+                                return;
+                            }
+
+                            // Obtener información del cliente que realizará el préstamo
+                            Console.Write("Ingrese el ID del cliente: ");
+                            int idCliente = Convert.ToInt32(Console.ReadLine());
+
+                            Cliente cliente = null;
+                            foreach (Cliente c in Clientes)
+                            {
+                                if (c.IdCliente == idCliente)
+                                {
+                                    cliente = c;
+                                    break;
+                                }
+                            }
+
+                            if (cliente == null)
+                            {
+                                Console.WriteLine("Cliente no encontrado.");
+                                return;
+                            }
+
+                            Console.WriteLine("Ingrese plazo del prestamo: ");
+                            int plazo = Convert.ToInt32(Console.ReadLine());
+
+
+
+
+                            // Registrar el préstamo
+                            Prestamo prestamo = new Prestamo(libro, ejemplar, cliente);
+                          
+
+                            // Actualizar estado del ejemplar
+                            ejemplar.Prestado = true;
+                            ejemplar.FechaAlta = prestamo.FechaPrestamo;
+
+                            // Agregar el préstamo a la lista de préstamos de la biblioteca
+                            Prestamos.Add(prestamo);
+
+                            Console.WriteLine("El libro ha sido prestado exitosamente.");
+                            return;
+                        }
                     }
                 }
-
-                if (cliente == null)
-                {
-                    Console.WriteLine("Cliente no encontrado.");
-                    return;
-                }
-
-                // Registrar el préstamo
-                Prestamo prestamo = new Prestamo(libro, ejemplar, cliente);
-                prestamo.FechaPrestamo = DateTime.Now;
-
-                // Actualizar estado del ejemplar
-                ejemplar.Prestado = true;
-                ejemplar.FechaPrestamo = prestamo.FechaPrestamo;
-
-                // Agregar el préstamo a la lista de préstamos de la biblioteca
-                Prestamos.Add(prestamo);
-
-                Console.WriteLine("El libro ha sido prestado exitosamente.");
-                return;
-            }
-        }
+                    
+        
     }
 
     Console.WriteLine("Ejemplar no encontrado.");

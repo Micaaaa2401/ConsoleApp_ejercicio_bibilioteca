@@ -65,13 +65,13 @@ namespace ConsoleApp_ejercicio_bibilioteca
             set { _id = value; }
         }
 
-        public Prestamo(int idCliente, int idEjemplar, int plazo, bool abierto,
+        public Prestamo(int idCliente, int idEjemplar, int plazo,
                     DateTime fechaPrestamo, DateTime fechaDevolucionTentativa, DateTime fechaDevolucionReal, int id)
         {
             IdCliente = idCliente;
             IdEjemplar = idEjemplar;
             Plazo = plazo;
-            Abierto = abierto;
+            Abierto = true;
             FechaPrestamo = fechaPrestamo;
             FechaDevolucionTentativa = fechaDevolucionTentativa;
             FechaDevolucionReal = fechaDevolucionReal;

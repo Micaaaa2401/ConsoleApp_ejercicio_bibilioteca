@@ -13,6 +13,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
         private string _observaciones;
         private int _precio;
         private DateTime _fechaAlta;
+        private bool _prestado;
 
 
         public int IdLibro
@@ -47,6 +48,11 @@ namespace ConsoleApp_ejercicio_bibilioteca
             set { _precio = value; }
         }
 
+        public bool Prestado
+        {
+            get { return _prestado; }
+            set { _prestado = value; }
+        }
 
         public Ejemplar(int idLibro, int id , string observaciones, DateTime fechaAlta, int precio ) 
         {
