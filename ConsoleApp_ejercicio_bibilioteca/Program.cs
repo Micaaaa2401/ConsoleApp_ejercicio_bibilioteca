@@ -56,7 +56,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
                         case "3":
                             Console.WriteLine(menuPrestamos);
                             break;
-                        
+
                         default:
                             Console.WriteLine("Opción inválida.");
                             break;
@@ -81,8 +81,8 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
 
 
+    
 
-
-    }
+        
     }
 }

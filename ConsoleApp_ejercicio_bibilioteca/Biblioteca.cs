@@ -157,7 +157,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
 
                             // Registrar el préstamo
-                            Prestamo prestamo = new Prestamo(libro, ejemplar, cliente);
+                            Prestamo prestamo = new Prestamo(cliente.IdCliente, ejemplar.Id, 2, DateTime.Now, DateTime.Now, DateTime.Now, 2 );
                           
 
                             // Actualizar estado del ejemplar
@@ -214,7 +214,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
                 // Actualizar estado del ejemplar
                 ejemplar.Prestado = false;
-                ejemplar.FechaPrestamo = DateTime.MinValue;
+                ejemplar.FechaAlta = DateTime.MinValue;
 
                 // Calcular y registrar la fecha de devolución
                 DateTime fechaDevolucion = DateTime.Now;
