@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp_ejercicio_bibilioteca.Capa;
+
+
 
 namespace ConsoleApp_ejercicio_bibilioteca
 {
@@ -62,7 +65,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
                                 AgregarCliente(biblioteca);
                             }  if(opcionCliente.ToUpper() == "2")
                             {
-                                biblioteca.ListarClientes();
+                                ListarClientes(biblioteca);
                             } else
                             {
                                 break;
@@ -71,6 +74,15 @@ namespace ConsoleApp_ejercicio_bibilioteca
                             break;
                         case "2":
                             Console.WriteLine(menuLibros);
+                            string opcionLibro = Console.ReadLine();
+                            if (opcionLibro.ToUpper() == "1")
+                            {
+                                LibroNegocio.
+                            }
+                            else
+                            {
+                                break;
+                            }
                             break;
                         case "3":
                             Console.WriteLine(menuPrestamos);
