@@ -12,7 +12,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
         {
             bool continuarActivo = true;
 
-            string menuPrincipal = "1) Clientes \n2) Libros \n3) Prestamos " +
+            string menuPrincipal = "Presione una de las siguientes opciones\n1) Clientes \n2) Libros \n3) Prestamos " +
                 " \nX) Salir";
 
             string menuClientes = ("1) Agregar cliente \n 2) Consultar cliente \n 3) Listar clientes \n 4) Eliminar clientes ");

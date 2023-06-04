@@ -30,5 +30,10 @@ namespace ConsoleApp_ejercicio_bibilioteca
             Email = email;
         }
 
+        public override string ToString()
+        {
+            return this.IdCliente + ") " + this.Apellido + ", " + this.Nombre + ", " + this.Email;
+        }
+
     }
 }

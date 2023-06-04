@@ -129,7 +129,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
         {
             return Ejemplares.Count();
         }
-        //pendiente hacer los metodos
+       
         
         public List<Ejemplar> TraerEjemplares(int idLibro)
        {
