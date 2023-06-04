@@ -53,7 +53,23 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
         public void IngresarCliente(Cliente cliente)
         {
-            this.Clientes.Add(cliente);
+
+            bool existe = false;
+
+            foreach (Cliente c in Clientes)
+            {
+                if (c.IdCliente   == cliente.IdCliente)
+                {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe)
+            {
+                Clientes.Add(cliente);
+               
+            }
+
         }
 
        
@@ -178,6 +194,7 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
     Console.WriteLine("Ejemplar no encontrado.");
 }
+
 
         public void DevolverLibro(int idEjemplar)
 {

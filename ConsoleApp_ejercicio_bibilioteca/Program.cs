@@ -10,12 +10,15 @@ namespace ConsoleApp_ejercicio_bibilioteca
     {
         static void Main(string[] args)
         {
+            Biblioteca biblioteca = new Biblioteca("biblio1", "calle nueva 123");
+
             bool continuarActivo = true;
 
             string menuPrincipal = "Presione una de las siguientes opciones\n1) Clientes \n2) Libros \n3) Prestamos " +
+                "\n4) Ingresar Cliente" +
                 " \nX) Salir";
 
-            string menuClientes = ("1) Agregar cliente \n 2) Consultar cliente \n 3) Listar clientes \n 4) Eliminar clientes ");
+            string menuClientes = ("Presione una de las siguientes opciones\n1) Agregar cliente \n 2) Consultar cliente \n 3) Listar clientes\n x) Salir ");
 
             string menuLibros = ("1) Agregar Libro \n 2) Consultar Libro \n 3) Listar libros \n " +
                 "4) Agregar ejemplar \n 5) Borrar ejemplar \n 6) Traer Ejemplares \n 7)Traer cantidad ejemplares ");
@@ -34,10 +37,12 @@ namespace ConsoleApp_ejercicio_bibilioteca
                 {
                     //capturamos la seleccion
                     string opcionSeleccionada = Console.ReadLine();
+                    //string opcionCliente = Console.ReadLine();
 
                     // validamos si el input es válido (en este caso podemos tmb dejar que el switch se encargue en el default.
                     // lo dejo igual por las dudas si quieren usar el default del switch para otra cosa.
-                    String[] opcionesValidas = new String[] { "1", "2", "3", "X" };
+                    String[] opcionesValidas = new String[] { "1", "2", "3", "4","X" };
+                    String[] opcionesClientes = new String[] { "1", "2", "3", "4", "X" };
 
                     if (opcionSeleccionada.ToUpper() == "X")
                     {
@@ -45,10 +50,24 @@ namespace ConsoleApp_ejercicio_bibilioteca
                         continue;
                     }
 
+
                     switch (opcionSeleccionada)
                     {
                         case "1":
+                          
                             Console.WriteLine(menuClientes);
+                            string opcionCliente = Console.ReadLine();
+                            if(opcionCliente.ToUpper() == "1")
+                            {
+                                AgregarCliente(biblioteca);
+                            }  if(opcionCliente.ToUpper() == "2")
+                            {
+                                biblioteca.ListarClientes();
+                            } else
+                            {
+                                break;
+                            }
+                            
                             break;
                         case "2":
                             Console.WriteLine(menuLibros);
@@ -56,6 +75,8 @@ namespace ConsoleApp_ejercicio_bibilioteca
                         case "3":
                             Console.WriteLine(menuPrestamos);
                             break;
+                   
+                            
 
                         default:
                             Console.WriteLine("Opción inválida.");
@@ -79,10 +100,29 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
         }
 
+        public static void AgregarCliente (Biblioteca biblioteca)
+        {
+            Cliente c1 = new Cliente(Utilidades.InsertarInt("Ingrese id de cliente"),
+                Utilidades.InsertarString("Ingrese email"),Utilidades.InsertarString("Ingrese nombre"),
+                Utilidades.InsertarString("Ingrese apellido"),Utilidades.InsertarString("Ingrese direccion"));
+
+            biblioteca.IngresarCliente(c1);
+            Console.WriteLine("cliente agregado");
+        }
+
+        public static void ListarClientes(Biblioteca biblioteca)
+        {
+       
+            foreach (Cliente c in biblioteca.Clientes)
+            {
+                
+                Console.WriteLine(c.ToString());
+            }
+        }
 
 
-    
 
-        
+
+
     }
 }
