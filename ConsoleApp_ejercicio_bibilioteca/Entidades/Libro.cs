@@ -145,7 +145,6 @@ namespace ConsoleApp_ejercicio_bibilioteca
 
      return ejemplaresEncontrados;
 }
-
-        
+       
     }
 }
